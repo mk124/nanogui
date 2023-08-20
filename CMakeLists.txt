@@ -80,6 +80,9 @@ endif()
 
 if (MSVC)
   set(NANOGUI_NATIVE_FLAGS_DEFAULT "")
+elseif (APPLE AND (CMAKE_OSX_ARCHITECTURES MATCHES "arm64;x86_64"))
+  # MacOS universal binary compatibility
+  set(NANOGUI_NATIVE_FLAGS_DEFAULT "")
 elseif (APPLE AND ((CMAKE_OSX_ARCHITECTURES MATCHES "arm64") OR
                    (CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "arm64")))
   # Apple M1 compatibility
